@@ -101,7 +101,7 @@ metadata:
 data:
   # Enable the CSI driver.
   # To run the non-default version of the CSI driver, see the override-able image properties in operator.yaml
-  ROOK_CSI_ENABLE_CEPHFS: "true"
+  ROOK_CSI_ENABLE_CEPHFS: "false"
   # Enable the default version of the CSI RBD driver. To start another version of the CSI driver, see image properties below.
   ROOK_CSI_ENABLE_RBD: "true"
   ROOK_CSI_ENABLE_GRPC_METRICS: "true"
@@ -383,7 +383,7 @@ spec:
         #   value: "Any"
         # Set the path where the Rook agent can find the flex volumes
         - name: FLEXVOLUME_DIR_PATH
-          value: "/etc/kubernetes/kubelet-plugins/volume/exec"
+          value: "/usr/libexec/kubernetes/kubelet-plugins/volume/exec"
         # Set the path where kernel modules can be found
         # - name: LIB_MODULES_DIR_PATH
         #  value: "<PathToLibModules>"
@@ -443,7 +443,7 @@ spec:
         # Whether to enable the flex driver. By default it is enabled and is fully supported, but will be deprecated in some future release
         # in favor of the CSI driver.
         - name: ROOK_ENABLE_FLEX_DRIVER
-          value: "false"
+          value: "true"
 
         # Whether to start the discovery daemon to watch for raw storage devices on nodes in the cluster.
         # This daemon does not need to run if you are only going to create your OSDs based on StorageClassDeviceSets with PVCs.
